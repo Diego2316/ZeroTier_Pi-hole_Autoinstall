@@ -6,8 +6,8 @@ echo "Updating repositories"
 apt update
 echo "Installing dependecies"
 apt upgrade -y
-apt install gpg
-apt install nano
+apt install -y gpg
+apt install -y nano
 echo "Installing ZeroTier"
 curl -s https://install.zerotier.com | sudo bash
 echo "Enabling autostart for ZeroTier"
