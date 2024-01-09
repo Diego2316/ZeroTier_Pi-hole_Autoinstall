@@ -19,7 +19,7 @@ echo "Joining $NETWORKID network"
 zerotier-cli join $NETWORKID
 echo "Joined network, unauthorized"
 MYID=$(zerotier-cli info | cut -d " " -f 3)
-JSON=`curl -s -H "Authorization: Bearer $APIKEY" $APIURL/network/$NETWORKID/member/$MYID | jq -c --arg name "Pi-hole" '.config.authorized=true | .config.ipAssignments=["10.147.20.100"] | .name=$name'`
-curl -s -o /dev/null -H "Authorization: Bearer $APIKEY" -d $JSON $APIURL/network/$NETWORKID/member/$MYID
+JSON='{"name": "Pi-hole", "config": {"authorized":true, "ipAssignments": ["10.147.20.100"]}}'
+curl -X POST -H 'Content-Type: application/json' -H "Authorization: token $APIKEY" "$APIURL/network/$NETWORKID/member/$MYID" -d $JSON
 MYIP=`zerotier-cli get $NETWORKID ip`
 echo "User $MYID authorized in $NETWORKID network with ip: $MYIP"
