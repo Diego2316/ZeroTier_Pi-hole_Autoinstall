@@ -4,16 +4,15 @@ APIKEY=
 NETWORKID=
 APIURL="https://api.zerotier.com/api/v1"
 #
-args=()
-while (($# > 0)); do
-   arg="$1"
-   arg_key="${arg%%=*}"
-   arg_data="${arg#*=}"
-   case $arg_key in
-      -a) APIKEY=${arg_data};;
-      -n) NETWORKID=${arg_data};;
-   esac
-   shift
+optstring="a:n:"
+i=1
+while getopts ${optstring} arg; do
+   i=$(($i+1))
+   case ${arg} in
+            a)  APIKEY=$OPTARG;;
+            n)  NETWORKID=$OPTARG;;
+            ?)  echo -e "Unrecognized option.";;
+    esac
 done
 #
 echo "Updating repositories"
