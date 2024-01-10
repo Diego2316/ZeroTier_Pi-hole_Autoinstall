@@ -1,8 +1,20 @@
 #!/bin/bash
 #
-APIKEY=3LZk8zWEUz4s8sM9KurG0kWlqz3zqFM8
-NETWORKID=d5e5fb65374eef97
+APIKEY=
+NETWORKID=
 APIURL="https://api.zerotier.com/api/v1"
+#
+args=()
+while (( $# > 0 )); do
+    arg="$1"
+    arg_key="${arg%%=*}"
+    arg_data="${arg#*=}"
+    case $arg_key in
+        --api|-a)           APIKEY=${arg_data}          ;;
+        --network|-n)       NETWORKID=${arg_data}       ;;                
+    esac
+    shift
+done
 #
 echo "Updating repositories"
 apt update
