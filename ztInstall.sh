@@ -9,10 +9,10 @@ i=1
 while getopts ${optstring} arg; do
    i=$(($i+1))
    case ${arg} in
-            a)  APIKEY=$OPTARG;;
-            n)  NETWORKID=$OPTARG;;
-            ?)  echo -e "Unrecognized option.";;
-    esac
+      a)  APIKEY=$OPTARG;;
+      n)  NETWORKID=$OPTARG;;
+      ?)  echo -e "Unrecognized option.";;
+   esac
 done
 #
 echo "Updating repositories"
