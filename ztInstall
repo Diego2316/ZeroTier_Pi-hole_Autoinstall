@@ -4,7 +4,7 @@ APIKEY=
 NETWORKID=
 APIURL="https://api.zerotier.com/api/v1"
 #
-args()
+args=()
 while (($# > 0)); do
    arg="$1"
    arg_key="${arg%%=*}"
