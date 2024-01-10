@@ -1,9 +1,7 @@
 #!/bin/bash
-#
 APIKEY=
 NETWORKID=
 APIURL="https://api.zerotier.com/api/v1"
-#
 optstring="a:n:"
 i=1
 while getopts ${optstring} arg; do
@@ -14,7 +12,6 @@ while getopts ${optstring} arg; do
       ?)  echo -e "Unrecognized option.";;
    esac
 done
-#
 echo "Updating repositories"
 apt update
 echo "Installing dependecies"
