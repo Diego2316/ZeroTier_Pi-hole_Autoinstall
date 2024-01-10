@@ -10,8 +10,8 @@ while (($# > 0)); do
    arg_key="${arg%%=*}"
    arg_data="${arg#*=}"
    case $arg_key in
-      a) APIKEY=${arg_data};;
-      n) NETWORKID=${arg_data};;
+      -a) APIKEY=${arg_data};;
+      -n) NETWORKID=${arg_data};;
    esac
    shift
 done
