@@ -1,7 +1,9 @@
+#!/bin/bash
+#
 APIKEY=3LZk8zWEUz4s8sM9KurG0kWlqz3zqFM8
 NETWORKID=d5e5fb65374eef97
 APIURL="https://api.zerotier.com/api/v1"
-
+#
 echo "Updating repositories"
 apt update
 echo "Installing dependecies"
