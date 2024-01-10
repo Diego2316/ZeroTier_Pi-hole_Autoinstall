@@ -21,7 +21,7 @@ echo "Joining $NETWORKID network"
 zerotier-cli join $NETWORKID
 echo "Joined network, unauthorized"
 MYID=$(zerotier-cli info | cut -d " " -f 3)
-curl -s -X POST -H 'Content-Type: application/json' -H "Authorization: token $APIKEY" "$APIURL/network/$NETWORKID/member/$MYID" -d '{"name": "Pi-hole", "config": {"authorized":true, "ipAssignments": ["10.147.20.100"]}}'
+curl -s -H 'Content-Type: application/json' -H "Authorization: token $APIKEY" "$APIURL/network/$NETWORKID/member/$MYID" -d '{"name": "Pi-hole", "config": {"authorized":true, "ipAssignments": ["10.147.20.100"]}}'
 echo -ne "waiting for network auth to register"
 while [ -z "$(zerotier-cli listnetworks | grep $NETWORKID | grep OK)" ]; do echo -ne ".";sleep 1 ; done
 echo -ne '\n'
