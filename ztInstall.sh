@@ -12,6 +12,10 @@ while getopts ${optstring} arg; do
       ?)  echo -e "Unrecognized option.";;
    esac
 done
+if [ -f /usr/sbin/zerotier-one ]; then
+	echo 'ZeroTier appears to already be installed.'
+	exit 0
+fi
 echo "Updating repositories"
 apt update
 echo "Installing dependecies"
